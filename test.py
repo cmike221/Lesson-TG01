@@ -26,11 +26,8 @@ async def help(message: Message):
 async def get_weather(message: types.Message):
     city = message.text
     await message.answer(F"Запрос погоды в {city}")
-    try:
-        weather_data = fetch_weather(city)
-    except:
-        await message.answer(F"Ошибка запроса для {city} - сайт не отвечает")
-        return
+    weather_data = fetch_weather(city)
+    # await message.answer("Обработка ...")
 
     if weather_data:
         await message.answer(weather_data)
